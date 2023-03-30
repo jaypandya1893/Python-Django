@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home Page</title>
+	<script type="text/javascript">
+		function checkFname()
+		{
+			var f=document.frm.fname.value;
+			var reg=/^[A-Za-a]+$/;
+			if(f=="")
+			{
+				document.getElementById("fname").innerHTML="Please Enter First Name";
+			}
+			else if(!reg.test(f))
+			{
+				document.getElementById("fname").innerHTML="Please Enter Only Alphabets";
+			}
+			else
+			{
+				document.getElementById("fname").innerHTML="";
+			}
+		}
+
+		function checkMobile()
+		{
+			var f=document.frm.mobile.value;
+			var reg=/^\d{10}$/;
+			if(f=="")
+			{
+				document.getElementById("mobile").innerHTML="Please Enter Mobile No";
+			}
+			else if(!reg.test(f))
+			{ 
+				document.getElementById("mobile").innerHTML="Please Enter 10 Digits Only";
+			}
+			else
+			{
+				document.getElementById("mobile").innerHTML="";
+			}
+		}
+		function checkPassword()
+		{
+			var f=document.frm.password.value;
+			var reg=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+			if(f=="")
+			{
+				document.getElementById("password").innerHTML="Please Enter Password";
+			}
+			else if(!reg.test(f))
+			{
+				document.getElementById("password").innerHTML="Must contain at least 1 number and 1 uppercase and lowercase letter, and at least 8 or more characters";
+			}
+			else
+			{
+				document.getElementById("password").innerHTML="";
+			}
+		}
+		function checkCPassword()
+		{
+			var p1=document.frm.password.value;
+			var p2=document.frm.cpassword.value;
+			
+			if(p1!=p2)
+			{ 
+				document.getElementById("cpassword").innerHTML="Password & Confirm Password Does Not Match";
+			}
+			else
+			{
+				document.getElementById("cpassword").innerHTML="";
+			}
+		}
+	</script>
+	
+</head>
+<body bgcolor="grey">
+<center>
+<h1>|| <a href="/">Home</a> || <a href="{% url 'login' %}">Login</a> || <a href="{% url 'signup' %}">Sign Up</a> ||</h1>
+
+<h1 align="center">SignUp Page</h1>
+
+<fieldset>
+
+<legend align="center"><h3>Signup Page Details:</h3></legend>
+<form method="post" name="frm">
+{% csrf_token %}
+<table cellpadding="5px" cellspacing="5px">
+<tr>
+<td>First Name</td>
+<td><input type="text" name="fname" placeholder="Enter First Name Here" onblur="checkFname();"></td>
+<td><span id="fname"></span></td>
+</tr>
+
+<tr>
+<td>Last name</td>
+<td><input type="text" name="lname" placeholder="Enter Last Name Here" ></td>
+</tr>
+
+<tr>
+<td>DOB</td>
+<td><input type="date" name="dob" placeholder="Enter DOB Here" ></td>
+</tr>
+
+<tr>
+<td>Mobile No</td>
+<td><input type="tel" name="mobile" placeholder="Enter Mob No Here" onblur="checkMobile();"></td>
+<td><span id="mobile"></span></td>
+</tr>
+
+<tr>
+<td>Email Id</td>
+<td><input type="email" name="email" placeholder="Enter Email Here"></td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td><input type="password" name="password" placeholder="Enter Password Here"></td>
+<td><span id="password"></span></td>
+</tr>
+
+<tr>
+<td>Confirm Password</td>
+<td><input type="password" name="cpassword" placeholder="Enter Confirm Password Here" onblur="checkCPassword();"></td>
+<td><span id="cpassword"></span></td>
+</tr>
+
+<tr>
+<td>Gender</td>    
+<td>
+<input type="radio" name="gender" value="Male">Male
+<input type="radio" name="gender" value="Female">Female
+</td>
+</tr>
+<tr>
+	<td align="center"  colspan="2">
+		<input type="submit" name="">
+		<input type="reset" name="">
+	</td>
+</tr>
+
+</table>
+
+</form>
+</fieldset>
+
+
+</center>
+</body>
+</html>

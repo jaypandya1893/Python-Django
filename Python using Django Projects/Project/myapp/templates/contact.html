@@ -1,0 +1,73 @@
+{% extends 'hedder.html' %}
+{% block content %}
+ 
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		tr,td{
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+<center>
+<h1 align="center">Contact Page</h1>
+{% if msg %}
+	<b style="color: blue;">{{msg}}</b>
+{% endif %}
+<fieldset>
+
+<legend align="center"><h3>Contact Details:</h3></legend>
+<form method="post" action="{% url 'contact' %}" name="frm">
+{% csrf_token %}
+<table cellpadding="5px" cellspacing="5px">
+<tr>
+<td>Name</td>
+<td><input type="text" name="name" placeholder="Enter Name Here" onblur="checkname();"></td>
+<td><span id="name"></span></td>
+</tr>
+
+<tr>
+<td>Mobile No</td>
+<td><input type="tel" name="mobile" placeholder="Enter Mob No Here" onblur="checkMobile();"></td>
+<td><span id="mobile"></span></td>
+</tr>
+
+<tr>
+<td>Email Id</td>
+<td><input type="email" name="email" placeholder="Enter Email Here"></td>
+</tr>
+
+<tr>
+<td>Remark</td>
+<td><textarea cols="22" rows="5" name="remark"></textarea></td>
+<td><span id="remark"></span></td>
+</tr>
+
+<tr>
+	<td align="center"  colspan="2">
+		<input type="submit" name="">
+		<input type="reset" name="">
+	</td>
+</tr>
+
+</table>
+
+</form>
+</fieldset>
+
+
+</center>
+<h1>Recent Contacts</h1>
+{% for i in contacts %}
+	Name : {{i.name}}<br>
+	Remark : {{i.remark}}<hr>
+{% endfor %}
+</body>
+</html>
+{% endblock %}

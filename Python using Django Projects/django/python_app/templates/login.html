@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home Page</title>
+	<script type="text/javascript">
+	
+	</script>
+</head>
+<body bgcolor="grey">
+<center>
+<h1>|| <a href="/">Home</a> || <a href="{% url 'login' %}">Login</a> || <a href="{% url 'signup' %}">Sign Up</a> ||</h1>
+
+<h1 align="center">LogIn Page</h1>
+
+<fieldset>
+
+<legend align="center"><h3>LogIn Page Details:</h3></legend>
+
+<form method="post" name="frm">
+{% csrf_token %}
+
+<table cellpadding="5px" cellspacing="5px">
+
+<tr>
+<td>Email Id</td>
+<td><input type="email" name="email" placeholder="Enter Email Here"></td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td><input type="password" name="password" placeholder="Enter Password Here"></td>
+<td><span id="password"></span></td>
+</tr>
+
+</table>
+
+</form>
+</fieldset>
+
+
+</center>
+</body>
+</html>
