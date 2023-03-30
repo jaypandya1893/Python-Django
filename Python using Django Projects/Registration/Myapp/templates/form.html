@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Registration</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+</head>
+
+<body>
+<div>
+<fieldset>
+<legend>Registration Details:</legend>
+<form method="post" name="RegistrationForm" action="{% url 'RegistrationForm' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>First Name</td>
+    <td><input type="text" name="fname"></td>
+</tr>
+<tr>
+    <td>Last Name</td>
+    <td><input type="text" name="lname"></td>
+</tr>
+<tr>
+    <td>Gender</td>
+    <td><select name="gender">
+        <option>----Select----</option>
+        <option>Male</option>
+        <option>Female</option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td>Mobile Number</td>
+    <td><input type="Number" name="mobile"></td>
+</tr>
+<tr>
+    <td>Email Id</td>
+    <td><input type="Email" name="email"></td>
+</tr>
+<tr>
+    <td>Address</td>
+    <td><input type="text" name="address"></td>
+</tr>
+<tr>
+    <td align="center" colspan="3"><input type="submit" name="">
+    </td>
+</tr>
+</table>
+</form>   
+</fieldset>
+</div>
+</body>
