@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FORM</title>
+</head>
+<body>
+<fieldset>
+<legend>Details</legend>
+<form method="post" name="formz" action="{% url 'formz' %}">
+{% csrf_token %}
+
+<table>
+<tr>
+	<td>Name</td>
+	<td><input type="text" name="name"></td>
+</tr>
+<tr>
+	<td>Mobile</td>
+	<td><input type="Mobile" name="mobile"></td>
+</tr>
+<tr>
+	<td>Email</td>
+	<td><input type="Email" name="email"></td>
+</tr>
+<tr>
+	<td colspan="3" align="center"><input type="submit"></td>
+</tr>
+</table>
+</form>
+</fieldset>
+</body>
+</html>
