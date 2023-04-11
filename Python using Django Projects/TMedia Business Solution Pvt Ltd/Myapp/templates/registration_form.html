@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registration Form</title>
+    {% load static %}
+    <link  href="{% static 'custom.css' %}" rel="stylesheet"/>
+</head>
+<body  class="form_data">
+<fieldset class="form_details">
+<legend class="tex"><h1 class="white">Registration Form Details</h1></legend>
+{% if msg %}
+<p><b style="color: red;">{{msg}}</b></p>
+{% endif %}
+<form method="post" name="registration_details" action="{% url 'registration_details' %}">
+{% csrf_token %}
+<table cellpadding="5px" cellspacing="5px">
+<tr>
+	<td>Name</td>
+	<td><input pattern="[a-zA-Z]+" type="text" name="name" required title="Only Alphabets allowed"></td>
+</tr>
+<tr>
+	<td>Email</td>
+	<td><input type="email" name="email" required></td>
+</tr>
+<tr>
+	<td>Password</td>
+	<td><input type="password" name="password"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required title="Password should be atleast 8 characters long and includes at least one uppercase letter, one lowercase letter, and one numeric digit"></td>
+</tr>
+<tr>
+	<td>Confirm Password</td>
+	<td><input type="password" name="cpassword" required></td>
+</tr>
+<tr>
+	<td colspan="3" align="center"><input type="submit"></td>
+</tr>
+</table>
+</form>
+</fieldset>
+</body>
+</html>
