@@ -7,6 +7,63 @@
 	<title>Registration Form</title>
     {% load static %}
     <link  href="{% static 'custom.css' %}" rel="stylesheet"/>
+	<script type="text/javascript">
+		function checkName(){
+			var name=document.registration_details.name.value;
+			var regex=/^[A-Za-z]+$/;
+			if(name=="")
+			{
+				document.getElementById("name").innerHTML="Please enter Name";	
+			}
+			else if(!regex.test(name))
+			{
+				document.getElementById("name").innerHTML="Please enter only Alphabets";	
+			}
+			else{
+				document.getElementById("name").innerHTML="";
+			}
+		}
+		function checkEmail(){
+			var email=document.registration_details.email.value;
+			var emailregex=/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/
+			if(email=="")
+			{
+				document.getElementById("email").innerHTML="Please enter Email";	
+			}
+			else if(!emailregex.test(email))
+			{
+				document.getElementById("email").innerHTML="Invalid Email";
+			}
+			else{
+				document.getElementById("email").innerHTML="";
+			}
+		}
+		function checkPassword(){
+			var password=document.registration_details.password.value;
+			var pasregex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+			if(password=="")
+			{
+				document.getElementById("password").innerHTML="Please enter Password";	
+			}
+			else if(!pasregex.test(password))
+			{
+			 document.getElementById("password").innerHTML="Password should be atleast 8 characters long and includes at least one uppercase letter, one lowercase letter, and one numeric digit";
+			}
+			else{
+				document.getElementById("password").innerHTML="Please enter Password";	
+			}
+		}
+		function checkConfirmPassword(){
+			var cpassword=document.registration_details.cpassword.value;
+			if(cpassword=="")
+			{
+				document.getElementById("cpassword").innerHTML="Please enter Confirm Password";	
+			}
+			else{
+				document.getElementById("cpassword").innerHTML="";
+			}
+		}
+	</script>
 </head>
 <body  class="form_data">
 <fieldset class="form_details">
@@ -19,19 +76,23 @@
 <table cellpadding="5px" cellspacing="5px">
 <tr>
 	<td>Name</td>
-	<td><input pattern="[a-zA-Z]+" type="text" name="name" required title="Only Alphabets allowed"></td>
+	<td><input  type="text" name="name" onblur="checkName();" autocomplete="false" ></td>
+	<td><span id="name"></span></td>
 </tr>
 <tr>
 	<td>Email</td>
-	<td><input type="email" name="email" required></td>
+	<td><input type="email" name="email" onblur="checkEmail();" autocomplete="false"></td>
+	<td><span id="email"></span></td>
 </tr>
 <tr>
 	<td>Password</td>
-	<td><input type="password" name="password"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required title="Password should be atleast 8 characters long and includes at least one uppercase letter, one lowercase letter, and one numeric digit"></td>
+	<td><input type="password" name="password"  onblur="checkPassword();" autocomplete="false"></td>
+	<td><span id="password"></span></td>
 </tr>
 <tr>
 	<td>Confirm Password</td>
-	<td><input type="password" name="cpassword" required></td>
+	<td><input type="password" name="cpassword" onblur="checkConfirmPassword();" autocomplete="false"></td>
+	<td><span id="cpassword"></span></td>
 </tr>
 <tr>
 	<td colspan="3" align="center"><input type="submit"></td>
